@@ -5,3 +5,9 @@
 *.txt
 __pycache__
 data
+*result
+*.egg-info/
+dist
+build
+.coverage
+coverage.xml
