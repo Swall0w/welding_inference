@@ -1,5 +1,6 @@
 import imageio
 import pandas as pd
+from skimage import io
 
 from welding.convert import convert_time_to_index, parse_time
 
@@ -15,14 +16,11 @@ def main():
     time = dataframe['Weld Time'][1]
     print(time)
     a = parse_time(time)
-#    print(a.minute)
-#    print(a.second)
-#    print(a.microsecond)
-    print(convert_time_to_index(a, fps))
-
-#    print(vid.get_meta_data())
-#    print(vid.get_length())
-
+    index = convert_time_to_index(a, fps)
+    img = vid.get_data(index)
+    print(img.shape)
+    io.imshow(img)
+    io.show()
 
 if __name__ == '__main__':
     main()
