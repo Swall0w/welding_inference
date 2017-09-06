@@ -1,26 +1,26 @@
 import imageio
 import pandas as pd
-from datetime import datetime
+from welding.convert import parse_time, convert_time_to_index
 
-def parse_time(timestamp):
-    a = datetime.strptime(timestamp, '%M:%S.%f')
-    return a
 
 def main():
     videofile = 'data/output.mp4'
     txtfile = 'data/input.txt'
 
     dataframe = pd.read_csv(txtfile, delimiter='\t')
-    time = dataframe['Weld Time'][1]
-    print(time)
-    a = parse_time(time)
-    print(a.minute)
-    print(a.second)
-    print(a.microsecond)
-
     vid = imageio.get_reader(videofile, 'ffmpeg')
     fps = vid.get_meta_data()['fps']
     print(fps)
+
+
+    time = dataframe['Weld Time'][1]
+    print(time)
+    a = parse_time(time)
+#    print(a.minute)
+#    print(a.second)
+#    print(a.microsecond)
+    print(convert_time_to_index(a, fps))
+
 #    print(vid.get_meta_data())
 #    print(vid.get_length())
 
