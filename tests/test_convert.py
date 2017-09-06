@@ -1,8 +1,7 @@
 import unittest
 
-from welding.convert import (parse_time,
-                             convert_time_to_index,
-                             _datetime_to_second)
+from welding.convert import (_datetime_to_second, convert_time_to_index,
+                             parse_time)
 
 
 class ParseTimeTest(unittest.TestCase):

@@ -1,6 +1,7 @@
 import imageio
 import pandas as pd
-from welding.convert import parse_time, convert_time_to_index
+
+from welding.convert import convert_time_to_index, parse_time
 
 
 def main():
@@ -10,8 +11,6 @@ def main():
     dataframe = pd.read_csv(txtfile, delimiter='\t')
     vid = imageio.get_reader(videofile, 'ffmpeg')
     fps = vid.get_meta_data()['fps']
-    print(fps)
-
 
     time = dataframe['Weld Time'][1]
     print(time)
@@ -27,4 +26,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

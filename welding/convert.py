@@ -7,8 +7,8 @@ def parse_time(timestamp):
 
 
 def _datetime_to_second(time):
-    second = (time.minute * 60. + time.second + 
-                float(str(time.microsecond)[:2]) * .01)
+    second = (time.minute * 60. + time.second +
+              float(str(time.microsecond)[:2]) * .01)
     return second
 
 
