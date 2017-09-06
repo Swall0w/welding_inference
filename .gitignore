@@ -4,3 +4,4 @@
 *.swp
 *.txt
 __pycache__
+data
