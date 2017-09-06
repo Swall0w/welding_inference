@@ -3,6 +3,7 @@ import pandas as pd
 from skimage import io
 
 from welding.convert import convert_time_to_index, parse_time
+from welding.replace import add_hour
 
 
 def main():
@@ -21,6 +22,7 @@ def main():
     print(img.shape)
     io.imshow(img)
     io.show()
+    dataframe['Weld Time'] = dataframe['Weld Time'].apply(add_hour)
 
 if __name__ == '__main__':
     main()
