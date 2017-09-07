@@ -42,4 +42,4 @@ script:
 
 after_success:
   # - CODECLIMATE_REPO_TOKEN=2f7f6297e9651d9a770ef1fd85bc2af4d48ea1dd3c781b6214b0712089fa702f codeclimate-test-reporter
-  # - codecov -t d03d5756-3cfe-4cfb-b54c-87449deb733c
+   - codecov -t 693376b0-234f-418e-9cf9-dcc1ddec39b2
