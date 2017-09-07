@@ -3,7 +3,7 @@ import pandas as pd
 from skimage import io
 
 from welding.convert import convert_time_to_index, parse_time
-from welding.replace import add_hour
+from welding.replace import add_hour, iterative_hour_to_series
 
 
 def main():
@@ -23,6 +23,9 @@ def main():
     io.imshow(img)
     io.show()
     dataframe['Weld Time'] = dataframe['Weld Time'].apply(add_hour)
+    dataframe['Weld Time'] = iterative_hour_to_series(dataframe['Weld Time'])
+    print(dataframe['Weld Time'])
+
 
 if __name__ == '__main__':
     main()

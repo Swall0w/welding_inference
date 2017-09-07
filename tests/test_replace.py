@@ -1,7 +1,9 @@
 import unittest
 
-from welding.replace import add_hour, iterative_hour_to_series
 import pandas as pd
+from pandas.util.testing import assert_series_equal
+
+from welding.replace import add_hour, iterative_hour_to_series
 
 
 class AddHourTest(unittest.TestCase):
@@ -29,5 +31,8 @@ class IterativeHourSeriesTest(unittest.TestCase):
                                  ])
 
     def test_iterative_hour_seies(self):
-        self.assertEqual(iterative_hour_to_series(self.timeseries),
-                         self.result)
+        assert_series_equal(iterative_hour_to_series(self.timeseries),
+                            self.result)
+
+suite = unittest.TestLoader().loadTestsFromTestCase(IterativeHourSeriesTest)
+unittest.TextTestRunner(verbosity=2).run(suite)
