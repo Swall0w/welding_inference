@@ -34,5 +34,6 @@ class IterativeHourSeriesTest(unittest.TestCase):
         assert_series_equal(iterative_hour_to_series(self.timeseries),
                             self.result)
 
+
 suite = unittest.TestLoader().loadTestsFromTestCase(IterativeHourSeriesTest)
 unittest.TextTestRunner(verbosity=2).run(suite)

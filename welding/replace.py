@@ -1,6 +1,3 @@
-import pandas as pd
-
-
 def add_hour(string):
     return "00:{}".format(string)
 
