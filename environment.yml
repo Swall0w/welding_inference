@@ -1,0 +1,14 @@
+name: clib
+channels:
+- !!python/unicode
+  'menpo'
+- !!python/unicode
+  'defaults'
+dependencies:
+  - Cython
+  - matplotlib
+  - numpy
+  - Pillow
+  - chainer
+  - scikit-image
+  - imageio
