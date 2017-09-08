@@ -6,9 +6,10 @@ from welding.convert import (_datetime_to_second, convert_time_to_index,
 
 class ParseTimeTest(unittest.TestCase):
     def setUp(self):
-        self.time = parse_time('00:15.5')
+        self.time = parse_time('00:00:15.5')
 
     def test_parse_test(self):
+        self.assertEqual(self.time.hour, 0)
         self.assertEqual(self.time.minute, 0)
         self.assertEqual(self.time.second, 15)
         self.assertEqual(self.time.microsecond, 500000)
@@ -16,7 +17,7 @@ class ParseTimeTest(unittest.TestCase):
 
 class DatetimeToSecondTest(unittest.TestCase):
     def setUp(self):
-        self.time = parse_time('00:15.5')
+        self.time = parse_time('00:00:15.5')
 
     def test_datetime_to_second(self):
         self.assertEqual(_datetime_to_second(self.time), 15.5)
@@ -24,7 +25,7 @@ class DatetimeToSecondTest(unittest.TestCase):
 
 class ConvertTimeIndexTest(unittest.TestCase):
     def setUp(self):
-        self.timecode = parse_time('00:15.5')
+        self.timecode = parse_time('00:00:15.5')
         self.fps = 10
 
     def test_convert_time_to_index(self):
