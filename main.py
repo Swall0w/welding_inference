@@ -15,18 +15,23 @@ def main():
     vid = imageio.get_reader(videofile, 'ffmpeg')
     fps = vid.get_meta_data()['fps']
 
-    time = dataframe['Weld Time'][1]
-    print(time)
-    a = parse_time(time)
-    index = convert_time_to_index(a, fps)
-    img = vid.get_data(index)
-    print(img.shape)
-#    io.imshow(img)
-#    io.show()
     dataframe['Weld Time'] = dataframe['Weld Time'].apply(add_hour)
     dataframe['Weld Time'] = iterative_hour_to_series(dataframe['Weld Time'])
+
+    for index, item in dataframe['Weld Time'].iteritems():
+        a = parse_time(item)
+        video_index = convert_time_to_index(a, fps)
+        print(index, video_index)
+
+
+#    print(time)
+#    img = vid.get_data(index)
+#    print(img.shape)
+#    io.imshow(img)
+#    io.show()
 #    dataframe['w1_dy[mm]'].plot()
-    print(dataframe['w1_dy[mm]'].as_matrix())
+#    print(dataframe['w1_dy[mm]'].as_matrix())
+#    print(dataframe['Weld Time'].as_matrix())
 
 
 if __name__ == '__main__':
