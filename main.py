@@ -17,11 +17,23 @@ def main():
 
     dataframe['Weld Time'] = dataframe['Weld Time'].apply(add_hour)
     dataframe['Weld Time'] = iterative_hour_to_series(dataframe['Weld Time'])
+    max_index = 4138
+    max_frame = 28
 
     for index, item in dataframe['Weld Time'].iteritems():
-        a = parse_time(item)
-        video_index = convert_time_to_index(a, fps)
-        print(index, video_index)
+        current_video_index = convert_time_to_index(
+            parse_time(item), fps)
+        
+        if index == max_index:
+            next_video_index = current_video_index + max_frame
+            break
+        else:
+            next_video_index = convert_time_to_index(
+                parse_time(dataframe['Weld Time'][index+1]), fps)
+
+#        print(index, video_index, dataframe['w1_dy[mm]'][index])
+        print(next_video_index - current_video_index)
+        print(index, max_index)
 
 
 #    print(time)
