@@ -24,28 +24,37 @@ def main():
     image_list = []
     label_list = []
 
-    for index, item in dataframe['Weld Time'].iteritems():
-        current_video_index = convert_time_to_index(
-            parse_time(item), fps)
-        
-        if index == max_index:
-            next_video_index = current_video_index + max_frame
-            break
-        else:
-            next_video_index = convert_time_to_index(
-                parse_time(dataframe['Weld Time'][index+1]), fps)
-
-#        img = vid.get_data(index).transpose(-1, 2, 0, 1).astype(np.float32) / 255.
-        nums = [x for x in range(current_video_index, next_video_index)]
-        for num in nums:
-            #img = vid.get_data(num)
-            img = vid.get_data(num).transpose(2, 0, 1).astype(np.float32) / 255.
-            image_list.append(img)
-            label_list.append(dataframe['w1_dy[mm]'][index])
-    print(len(image_list), len(label_list))
+    img = vid.get_data(10000)
+    print(img)
+#    for index, item in dataframe['Weld Time'].iteritems():
+#        current_video_index = convert_time_to_index(
+#            parse_time(item), fps)
+#        
+#        if index == max_index:
+#            next_video_index = current_video_index + max_frame
+#            break
+#        else:
+#            next_video_index = convert_time_to_index(
+#                parse_time(dataframe['Weld Time'][index+1]), fps)
+#
+##        img = vid.get_data(index).transpose(-1, 2, 0, 1).astype(np.float32) / 255.
+#        nums = [x for x in range(current_video_index, next_video_index)]
+#        for num in nums:
+#            print(num)
+#            try:
+##                img = vid.get_data(num)
+#                img = vid.get_data(num).transpose(2, 0, 1).astype(np.float32) / 255.
+#                image_list.append(img)
+#                label_list.append(dataframe['w1_dy[mm]'][index])
+#            except:
+#                print('error')
+#    print(len(image_list), len(label_list))
+#    print(len(label_list))
+#    print(len(image_list))
 #        print(index, video_index, dataframe['w1_dy[mm]'][index])
 #        print(next_video_index - current_video_index)
 #        print(index, max_index)
+    print('vid: ', len(vid))
 
 
 #    print(time)
